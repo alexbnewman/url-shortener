@@ -4,8 +4,6 @@ class Test::UrlsController < ApplicationController
     # Don't have to return json from all these (I think?) bc
     # should be default return format.
 
-    # TODO: Or do I need to render JSON? So that the correct thing is returned?
-
     def index
         @urls = Url.all
     end
