@@ -8,7 +8,8 @@ class Test::UrlsController < ApplicationController
     # cuz I'm only kind of using for CRUD Rest actions, but not sure.
     # Only specified actions - :create, :update, :destroy -- this is to be able 
     # to access these routes with Postman so I can test things (gets around
-    # issue of CSRF token).
+    # issue of CSRF token -- token that verifies all requests are coming from
+    # my own web app).
     skip_before_action :verify_authenticity_token, only: [:index, :create, :destroy]
 
     def index
