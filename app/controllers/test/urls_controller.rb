@@ -10,7 +10,7 @@ class Test::UrlsController < ApplicationController
 
     def create
         @url = Url.create(
-            short: params[:short]
+            short: params[:short],
             original: params[:original]
         )
     end
