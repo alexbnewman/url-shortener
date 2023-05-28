@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   #TODO: Make this private (not part of production env)
   # Default format of routes is JSON, since we are j. testing.
-  namespace :test, :defaults => {:format => :json} do
+  namespace :test do
     resources :urls, only: [:index, :create, :destroy]
   end
 
