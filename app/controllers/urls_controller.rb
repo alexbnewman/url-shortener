@@ -32,6 +32,7 @@ class UrlsController < ApplicationController
     end
   end
 
+  # TODO -- this
   def decode
     @url = Url.find_by(short: params[:short])
     if @url then redirect_to @url.original
