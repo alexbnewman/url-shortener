@@ -14,10 +14,19 @@ class UrlsController < ApplicationController
   def encode
     #@short_url = UrlConverter.new(params[:original]).encode
     @short_url = UrlConverter.encode(params[:original])
-    @url = Url.new(url_params)
+    @url = Url.new(url_params.merge(short: @short_url))
     # TODO: Do you only want to render JSON for testing? 
     if @url.save
-      render json: { short_url: url_for(@url.short) }, status: :created
+      # TODO: Probably will want to uncomment the line below and comment out
+      # the one underneath, because likely will j. want short URL and not both.
+      # Only have both showing for test purposes.
+
+      # TODO: Altho act. can possibly j. call test routes --> show all? Might 
+      # want to make route j. to show one by ID. Might be able to not have this
+      # like this (with right one commented out).
+
+      # render json: { short: url_for(@url.short) }, status: :created
+      render json: @url
     else
       render json: { error: 'Failed to create short URL' }, status: :unprocessable_entity
     end
@@ -34,7 +43,7 @@ class UrlsController < ApplicationController
   private
 
   def url_params
-    params.require(:url).permit(:original, @short_url)
+    params.permit(:original)
   end
 
 end
