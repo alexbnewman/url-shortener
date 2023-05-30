@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-url1 = Url.create(short: "ex.co/123", original: "example.com/1234")
+url1 = Url.create(short: "ex_co/123", original: "example.com/1234")

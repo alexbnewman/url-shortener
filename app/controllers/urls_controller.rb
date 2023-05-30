@@ -35,7 +35,12 @@ class UrlsController < ApplicationController
   # TODO -- this
   def decode
     @url = Url.find_by(short: params[:short])
-    if @url then redirect_to @url.original
+
+    # TODO: Uncomment line below and comment out one underneath. Current 
+    # situation exists for testing purposes.
+    
+    # if @url then redirect_to @url.original
+    if @url then render json: @url
     else
       render json: { error: 'Short URL not found' }, status: :not_found
     end
