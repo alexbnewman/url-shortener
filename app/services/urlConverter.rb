@@ -1,16 +1,18 @@
-require 'digest'
+# Note: Encoding in base-62.
 
-# Note: Using MD5 to hash (uniqueness) and then encoding in Base-62
-# to make hash the correct size (and allow for greater uniqueness than
-# just truncating the hash).
+# TODO: Change model so short isn't saved...
 
 class UrlConverter
+
+    base = 62
+
     # Use "self" so that you can call methods without having
     # to create an actual instance of the class.
-    # TODO: Do I need to call ".to_s" on "url"?
-    def self.encode(url)
-        # Hexdigest so encoding is better.
-        hash = Digest::MD5.hexdigest url
+
+    # TODO: Do I need to call ".to_i" on "id"? Change this func
+    # so it takes in an id and not a url...
+    def self.encode(id)
+        url = to_base_62(id)
         return url
     end
 
@@ -18,6 +20,23 @@ class UrlConverter
         return url
     end
 
+    ##################################
     private
+
+    block =  Proc.new {|x| x % 62)
+
+    end
+
+    def to_base_62(n)
+        digits = []
+        
+        while n > 0
+            digits.push n % 62
+            n = n / 62
+        end
+
+        digits.reverse
+
+    end
 
 end
