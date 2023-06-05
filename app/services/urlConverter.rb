@@ -1,10 +1,10 @@
 # Note: Encoding in base-62.
 
 # TODO: Change model so short isn't saved...
-
 class UrlConverter
 
     base = 62
+    string62 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
     # Use "self" so that you can call methods without having
     # to create an actual instance of the class.
@@ -23,19 +23,15 @@ class UrlConverter
     ##################################
     private
 
-    block =  Proc.new {|x| x % 62)
-
-    end
-
     def to_base_62(n)
         digits = []
-        
+
         while n > 0
-            digits.push n % 62
+            digits.push(n % 62)
             n = n / 62
         end
 
-        digits.reverse
+        digits.reverse!
 
     end
 
