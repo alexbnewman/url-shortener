@@ -22,3 +22,9 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Some of my notes:
+
+* Used a base-62 encoding/decoding system
+
+* Database: PostgreSQL
