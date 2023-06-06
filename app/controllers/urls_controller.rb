@@ -1,8 +1,6 @@
 require './app/services/urlConverter.rb'
 class UrlsController < ApplicationController
 
-  # TODO: Add comments defining functions? What is this called again?
-
   # TODO: I don't actually know how safe this is... Maybe okay
   # cuz I'm only kind of using for testing actions, but not sure.
   # Also, this is to be able to access these routes with Postman
@@ -12,12 +10,14 @@ class UrlsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:encode, :decode]
 
   def encode
-    #@short_url = UrlConverter.encode(params[:id])
-    #@url = Url.new(url_params.merge(short: @short_url))
     # TODO: Do you only want to render JSON for testing?
-    #if @url.save
+    @url = Url.new(url_params.merge(params[:short]))
+    if @url.save
+      # If entry saves, update entry with encoded ID (bc now actually have an ID
+      #  to pull from)
+      @url.short = UrlConverter.encode(@url.id)
       # TODO: Probably will want to uncomment the line below and comment out
-      # the one underneath, because likely will j. want short URL and not both.
+      # the one underneath, because likely will j. want short URL and not orig.
       # Only have both showing for test purposes.
 
       # TODO: Altho act. can possibly j. call test routes --> show all? Might
@@ -25,12 +25,6 @@ class UrlsController < ApplicationController
       # like this (with right one commented out).
 
       # render json: { short: url_for(@url.short) }, status: :created
-      #render json: @url
-# Doing this for testing
-    @url = Url.new(url_params.merge(params[:short]))
-    if @url.save
-      # If entry saves, update entry with encoded ID (bc now actually have an ID to pull from)
-      @url.short = UrlConverter.encode(@url.id)
       render json: @url
     else
       render json: { error: 'Failed to create short URL' }, status: :unprocessable_entity
