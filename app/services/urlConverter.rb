@@ -3,8 +3,8 @@
 # TODO: Change model so short isn't saved...
 class UrlConverter
 
-    base = 62
-    string62 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+    @@base = 62
+    @@string62 = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
     # Use "self" so that you can call methods without having
     # to create an actual instance of the class.
@@ -13,6 +13,7 @@ class UrlConverter
     # so it takes in an id and not a url...
     def self.encode(id)
         url = to_base_62(id)
+        url.map! {|elt| @@string62[elt]}
         return url
     end
 
@@ -27,11 +28,11 @@ class UrlConverter
         digits = []
 
         while n > 0
-            digits.push(n % 62)
-            n = n / 62
+            digits.push(n % @@base)
+            n = n / @@base
         end
 
-        digits.reverse!
+        return digits.reverse!
 
     end
 
