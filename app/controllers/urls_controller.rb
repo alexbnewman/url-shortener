@@ -12,10 +12,10 @@ class UrlsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:encode, :decode]
 
   def encode
-    @short_url = UrlConverter.encode(params[:id])
-    @url = Url.new(url_params.merge(short: @short_url))
+    #@short_url = UrlConverter.encode(params[:id])
+    #@url = Url.new(url_params.merge(short: @short_url))
     # TODO: Do you only want to render JSON for testing?
-    if @url.save
+    #if @url.save
       # TODO: Probably will want to uncomment the line below and comment out
       # the one underneath, because likely will j. want short URL and not both.
       # Only have both showing for test purposes.
@@ -25,6 +25,12 @@ class UrlsController < ApplicationController
       # like this (with right one commented out).
 
       # render json: { short: url_for(@url.short) }, status: :created
+      #render json: @url
+# Doing this for testing
+    @url = Url.new(url_params.merge(params[:short]))
+    if @url.save
+      # If entry saves, update entry with encoded ID (bc now actually have an ID to pull from)
+      @url.short = UrlConverter.encode(@url.id)
       render json: @url
     else
       render json: { error: 'Failed to create short URL' }, status: :unprocessable_entity
