@@ -12,7 +12,7 @@ class UrlsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: [:encode, :decode]
 
   def encode
-    @short_url = UrlConverter.encode(params[:original])
+    @short_url = UrlConverter.encode(params[:id])
     @url = Url.new(url_params.merge(short: @short_url))
     # TODO: Do you only want to render JSON for testing?
     if @url.save

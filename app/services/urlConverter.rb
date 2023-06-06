@@ -12,7 +12,8 @@ class UrlConverter
     # TODO: Do I need to call ".to_i" on "id"? Change this func
     # so it takes in an id and not a url...
     def self.encode(id)
-        url = to_base_62(id)
+        Rails.logger.info "#{id}"
+        url = self.to_base_62(id.to_i)
         url.map! {|elt| @@string62[elt]}
         return url
     end
@@ -24,8 +25,12 @@ class UrlConverter
     ##################################
     private
 
-    def to_base_62(n)
+    def self.to_base_62(n)
         digits = []
+
+        if n.nil?
+          return "0"
+        end
 
         while n > 0
             digits.push(n % @@base)
