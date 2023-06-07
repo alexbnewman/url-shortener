@@ -15,6 +15,7 @@ class UrlsController < ApplicationController
     if @url.save
       # If entry saves, update entry with encoded ID (bc now actually have an ID
       #  to pull from)
+      #  TODO: This does NOT actually save to database. Just this instance of @url.
       @url.short = UrlConverter.encode(@url.id)
       # TODO: Probably will want to uncomment the line below and comment out
       # the one underneath, because likely will j. want short URL and not orig.

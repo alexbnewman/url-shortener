@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   #TODO: Make this private (not part of production env)
   # Default format of routes is JSON, since we are j. testing.
   namespace :test do
-    resources :urls, only: [:index, :create, :destroy]
+    resources :urls, only: [:index, :create, :destroy] do
+      collection do
+        delete '/destroy_range', to: 'urls#destroy_range'
+      end
+    end
   end
 
   #TODO: set static route for root to home page?
