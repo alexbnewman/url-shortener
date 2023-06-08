@@ -19,7 +19,13 @@ class UrlConverter
     end
 
     def self.decode(url)
-        return url
+        # Convert to array of chars.
+        url.chars!
+        # Identify indices that chars map to in our alphabet.
+        url.map! {|elt| @@string62.index(elt)}
+        # Get them back out of base 62 to DB entry ID.
+        id = out_base_62(url)
+        return id
     end
 
     ##################################
@@ -34,7 +40,12 @@ class UrlConverter
         end
 
         return digits.reverse!
+    end
 
+    def self.out_base_62(digits)
+        res = 0
+        digits.each_with_index { |val, index| res += (@@base**index) * val}
+        return res
     end
 
 end
