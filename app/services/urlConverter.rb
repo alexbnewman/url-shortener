@@ -20,11 +20,11 @@ class UrlConverter
 
     def self.decode(url)
         # Convert to array of chars.
-        url.chars!
+        id = url.chars
         # Identify indices that chars map to in our alphabet.
-        url.map! {|elt| @@string62.index(elt)}
+        id.map! {|elt| @@string62.index(elt)}
         # Get them back out of base 62 to DB entry ID.
-        id = out_base_62(url)
+        id = out_base_62(id)
         return id
     end
 
@@ -33,17 +33,16 @@ class UrlConverter
 
     def self.to_base_62(n)
         digits = []
-
         while n > 0
             digits.push(n % @@base)
             n = n / @@base
         end
-
         return digits.reverse!
     end
 
     def self.out_base_62(digits)
         res = 0
+        digits.reverse!
         digits.each_with_index { |val, index| res += (@@base**index) * val}
         return res
     end

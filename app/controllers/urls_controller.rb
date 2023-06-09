@@ -33,7 +33,7 @@ class UrlsController < ApplicationController
   end
 
   def decode
-    @url = Url.find_by(short: params[:short])
+    @url = Url.find(UrlConverter.decode(params[:short]))
 
     # TODO: Uncomment line below and comment out one underneath. Current
     # situation exists for testing purposes.
