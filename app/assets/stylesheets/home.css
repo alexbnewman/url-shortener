@@ -1,0 +1,26 @@
+body {
+    margin: auto;
+    width: 50%;
+    font-family: "Poppins", sans-serif;
+  }
+  #inpBox {
+
+  }
+  #submitButton {
+    background-color: white;
+    border: 3px solid #e788fc;
+    border-radius: 8px;
+    color: #e788fc;
+    font-size: 5vw;
+    padding: .5vw 5vw;
+    transition-duration: 0.4s;
+  }
+  #submitButton:hover {
+    background-color: #e788fc;
+    color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  }
+  #longUrl {
+    font-size: 5vw;
+    padding: 1vw .2vw 1vw 1vw;
+  }
