@@ -1,6 +1,7 @@
 body {
     margin: auto;
     width: 50%;
+    padding: 70px 0;
     font-family: "Poppins", sans-serif;
   }
   #inpBox {
@@ -8,6 +9,9 @@ body {
   }
   #submitButton {
     background-color: white;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     border: 3px solid #e788fc;
     border-radius: 8px;
     color: #e788fc;
