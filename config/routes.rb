@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  # Defines the root path route ("/")
+  root 'pages#enter'
+  get '/home', to: 'pages#home'
+
   post '/encode', to: 'urls#encode'
   get '/:short', to: 'urls#decode'
 
@@ -12,10 +17,5 @@ Rails.application.routes.draw do
     end
   end
 
-  #TODO: set static route for root to home page?
-
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
 end
