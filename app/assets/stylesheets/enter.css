@@ -1,0 +1,27 @@
+body {
+    margin: auto;
+    padding: 70px 0;
+    width: 60%;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2vw;
+  }
+  button {
+    background-color: white;
+    border: 3px solid #e788fc;
+    display: block;
+    border-radius: 8px;
+    color: #e788fc;
+    font-size: 1.2vw;
+    padding: .5vw 2vw;
+    transition-duration: 0.4s;
+  }
+  button:hover {
+    background-color: #e788fc;
+    color: white;
+  }
+  a {
+      text-decoration: none;
+  }
+  a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+    cursor: pointer;
+}
