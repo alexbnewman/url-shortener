@@ -2,6 +2,8 @@
 <html>
     <body>
       <p> <b> URL Shortener </b> <br> <em> Click below to start creating a shortened link! </em> </p>
-        <a href="/home"><button type="button">Enter</button></a>
+        <%= link_to home_path do %>
+            <button type="button">Enter</button>
+        <% end %>
     </body>
 </html>
