@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <form>
-      <div id="inpBox">
-        <input type="text" id="longUrl" placeholder="paste your long URL here"><br><br>
-      </div>
-        <input type="submit" id="submitButton" value="submit">
-    </form>
-      <form action="<%= url_for(controller: 'urls', action: 'encode') %>" method="post">
+    <form action="<%= url_for(controller: 'urls', action: 'encode') %>" method="post">
       <input type="text" id="longUrl" name="original" placeholder="paste your long URL here"><br><br>
       <input type="submit" id="submitButton" value="submit">
     </form>

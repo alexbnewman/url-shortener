@@ -19,13 +19,15 @@ class UrlsController < ApplicationController
       @url.short = UrlConverter.encode(@url.id)
       # TODO: Probably will want to uncomment the line below and comment out
       # the one underneath, because likely will j. want short URL and not orig.
-      # Only have both showing for test purposes.
+      # Only have both showing for test purposes. Or? do I want to redirect to
+      # diff page -- render "pages/shortened"
 
       # TODO: Altho act. can possibly j. call test routes --> show all? Might
       # want to make route j. to show one by ID. Might be able to not have this
       # like this (with right one commented out).
 
       # render json: { short: url_for(@url.short) }, status: :created
+      # render "pages/shortened"
       render json: @url
     else
       render json: { error: 'Failed to create short URL' }, status: :unprocessable_entity

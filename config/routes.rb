@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root 'pages#enter'
   get '/home', to: 'pages#home'
+  get '/shortened', to: 'pages#shortened'
 
   post '/encode', to: 'urls#encode'
   get '/:short', to: 'urls#decode'
