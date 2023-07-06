@@ -17,6 +17,7 @@ class UrlsController < ApplicationController
       #  to pull from)
       #  TODO: This does NOT actually save to database. Just this instance of @url.
       @url.short = UrlConverter.encode(@url.id)
+      # @short = UrlConverter.encode(@url.id)
       # TODO: Probably will want to uncomment the line below and comment out
       # the one underneath, because likely will j. want short URL and not orig.
       # Only have both showing for test purposes. Or? do I want to redirect to
@@ -28,7 +29,7 @@ class UrlsController < ApplicationController
 
       # render json: { short: url_for(@url.short) }, status: :created
       # render "pages/shortened"
-      render json: @url
+      redirect_to shortened_path(short: url_for(@url.short))
     else
       render json: { error: 'Failed to create short URL' }, status: :unprocessable_entity
     end

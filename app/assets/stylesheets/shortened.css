@@ -1,0 +1,44 @@
+html {
+    background: rgb(231,136,252);
+    background: linear-gradient(0deg, rgba(231,136,252,1) 35%, rgba(0,212,255,0.0845588235294118) 100%);
+  }
+  body {
+    margin: auto;
+    padding: 70px 0;
+    width: 60%;
+    font-family: "Poppins", sans-serif;
+  }
+  input[type=text] {
+    width: 100%;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid;
+    border-color: #2c2c2e;
+    border-radius: 4px;
+  }
+  #longUrl {
+    font-size: 2rem;
+    padding: 1vw .2vw 1vw 1vw;
+  }
+  #inpBox {
+
+  }
+  #submitButton {
+    background-color: white;
+    border: 3px solid #e788fc;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 8px;
+    color: #e788fc;
+    font-size: 5vw;
+    padding: .5vw 5vw;
+    transition-duration: 0.4s;
+  }
+  #submitButton:hover {
+    background-color: #e788fc;
+    color: white;
+  }
+  a[href], input[type='submit'], input[type='image'], label[for], select, button, .pointer {
+      cursor: pointer;
+  }
